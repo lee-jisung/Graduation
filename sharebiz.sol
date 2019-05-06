@@ -89,6 +89,7 @@ contract MultiOwnable {
     }
 }
 
+// 회원 관리를 위한 contract
 contract Member is MultiOwnable{
     
     reviews[] public Reviews;
@@ -110,6 +111,9 @@ contract Member is MultiOwnable{
         string score;
     }
     
+    // web상에서 회원가입을 할 때 불려지는 function
+    // 회원가입하는 user의 ethereum 주소, user_type을 받아오고 나머지를 0으로 초기화
+    // 각 mapping함수에 값을 넣어 초기화
     function firstJoin(address _etherAddr, uint8 _userType, uint256 _evaluatedValue, uint256 _evaluatedTimes, uint256 _evaluateCount) public onlyOwner {
         etherAddr[_etherAddr]=_etherAddr;
         userType[_etherAddr]=_userType;
@@ -126,6 +130,8 @@ contract Member is MultiOwnable{
         }
     }
     
+    // 이하로는 get Method로 user의 ethereum주소를 이용하거나 
+    // 블록체인에 저장된 전체 user 수 등을 파악하기 위한 function들
     function getAddress(address _etherAddr) view public onlyOwner returns (address){
         return etherAddr[_etherAddr];
     }
@@ -169,7 +175,8 @@ contract Member is MultiOwnable{
             //if(keccak256(abi.encodePacked(Reviews[i].recipient)) == keccak256(abi.encodePacked(_etherAddr))){
     }
 
-    
+    // review를 쓴사람과 적힌사람의 기록을 블록체인상에 저장하기 위한 function
+    // Reviews라는 array에 각 요소 별로 저장하여 관리
     function setReviews(address _writer, address _recipient, string _review, uint256 _evaluatedValue, string _score) public onlyOwner{
         Reviews.push(
             reviews({

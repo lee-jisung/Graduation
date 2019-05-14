@@ -1,9 +1,10 @@
 # Graduation project(ShareBZ)
 
 <br>
-A Credit Evaluation Model for Sharing Economy System using Block Chain
+<h3>A Credit Evaluation Model for Sharing Economy System using Block Chain</h3>
 
 <br>
 
 <hr>
-please see the attached wiki page for the detail
+<br>
+<i>please see the attached wiki page for the detail</i>
